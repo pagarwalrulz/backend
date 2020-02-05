@@ -22,8 +22,8 @@ if (process.env.NODE_ENV == 'production') {
     });
 }
 
-var url = "mongodb://localhost:27017/local";
-//var url = "mongodb+srv://mongodbuser:mongodbuser@fullstackprojectcluster-hghwx.mongodb.net/Users?retryWrites=true&w=majority";
+//var url = "mongodb://localhost:27017/local";
+var url = "mongodb+srv://mongodbuser:mongodbuser@fullstackprojectcluster-hghwx.mongodb.net/Users?retryWrites=true&w=majority";
 
 mongoose.connect(url, {useNewUrlParser: true});
 mongoose.connect(url, {useUnifiedTopology: true});
