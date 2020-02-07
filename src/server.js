@@ -14,16 +14,14 @@ app.use(bodyParser.json());
 const fullStackAppRouter = express.Router();
 app.use('/fullStackApp', fullStackAppRouter);
 
-if (process.env.NODE_ENV == 'production') {
-    // set static folder
-    app.use(express.static('../../frontend/build'));
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-    });
-}
+// settings for connecting to the client
+app.use(express.static(path.join(__dirname, '../../frontend/build')));
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
+});
 
-//var url = "mongodb://localhost:27017/local";
-var url = "mongodb+srv://mongodbuser:mongodbuser@fullstackprojectcluster-hghwx.mongodb.net/Users?retryWrites=true&w=majority";
+var url = "mongodb://localhost:27017/local";
+//var url = "mongodb+srv://mongodbuser:mongodbuser@fullstackprojectcluster-hghwx.mongodb.net/Users?retryWrites=true&w=majority";
 
 mongoose.connect(url, {useNewUrlParser: true});
 mongoose.connect(url, {useUnifiedTopology: true});
